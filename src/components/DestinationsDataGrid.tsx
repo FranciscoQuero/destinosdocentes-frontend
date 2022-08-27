@@ -72,7 +72,7 @@ export default class DestinationsDataGrid extends React.Component <any, any> {
               <DataGrid
                   rows={this.state.rows}
                   columns={this.state.columns}
-                  pageSize={40}
+                  pageSize={50}
                   rowsPerPageOptions={[50]}
                   localeText={esES.components.MuiDataGrid.defaultProps.localeText}
               />

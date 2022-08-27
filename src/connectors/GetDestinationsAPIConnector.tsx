@@ -7,7 +7,7 @@ export default class GetDestinationsAPIConnector extends GetDestinationsConnecto
     constructor() {
         super();
 
-        this.baseUrl = 'http://192.168.5.150:8000/travel-destination/';
+        this.baseUrl = 'http://destinosdocentes.ddns.net:8000/travel-destination/';
     }
 
     getDestinations(fromTown: string, limit: number) {
