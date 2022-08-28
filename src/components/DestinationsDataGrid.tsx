@@ -19,32 +19,24 @@ export default class DestinationsDataGrid extends React.Component <any, any> {
             theme: createTheme(),
             rows: [{id: 0, from: '', to: '', distance: '', time: ''}],
             columns: [
-                {field: 'id', headerName: '🔢 Orden', flex: 0.5,},
-                {
-                    field: 'from',
-                    headerName: '🏠 Desde',
-                    editable: false,
-                    flex: 1,
-                },
+                {field: 'id', headerName: '#', flex: 0.15,},
                 {
                     field: 'to',
-                    headerName: '🗺️ Hasta',
+                    headerName: 'Destino',
                     editable: false,
                     flex: 1,
                 },
                 {
                     field: 'time',
-                    headerName: '⏱ Tiempo',
-                    type: 'number',
+                    headerName: 'Tiempo',
                     editable: false,
-                    flex: 0.75,
+                    flex: 0.65,
                 },
                 {
                     field: 'distance',
-                    headerName: '🚘 Distancia',
+                    headerName: 'Distancia',
                     editable: false,
-                    type: 'number',
-                    flex: 0.75,
+                    flex: 0.65,
                 },
             ]
         };
@@ -68,13 +60,14 @@ export default class DestinationsDataGrid extends React.Component <any, any> {
 
   render() {
       return (
-          <Grid container style={{height: 800, width: '100%'}}>
+          <Grid container style={{height: 500, width: '100%'}}>
               <DataGrid
                   rows={this.state.rows}
                   columns={this.state.columns}
                   pageSize={50}
                   rowsPerPageOptions={[50]}
                   localeText={esES.components.MuiDataGrid.defaultProps.localeText}
+                  getRowHeight={() => 'auto'}
               />
           </Grid>
       )

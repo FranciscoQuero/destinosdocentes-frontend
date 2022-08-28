@@ -28,9 +28,9 @@ export default class DestinationsPresenter extends DestinationsPresenterInterfac
         const minutes = Math.floor(time / 60) - (hours * 60);
         let hoursText = ''
         if (hours > 0)
-            hoursText = hours.toString() + ' Horas y ';
+            hoursText = hours.toString() + ' h ';
 
-        return hoursText + minutes.toString() + ' minutos';
+        return hoursText + minutes.toString() + ' min';
     }
 
     _calculateKmWithTwoDecimals = (distance: number) => {

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import {Autocomplete, Button, Card, TextField} from '@mui/material';
+import {Autocomplete, Button, Box, CardContent, CardActions, TextField} from '@mui/material';
 import DestinationsDataGrid from "./DestinationsDataGrid";
-import Box from "@mui/material/Box";
+import DestinationsNumberSlider from "./DestinationsNumberSlider";
+import Typography from "@mui/material/Typography";
 
 export default class SearchDestinationForm extends Component {
     state = {
@@ -9,7 +10,6 @@ export default class SearchDestinationForm extends Component {
         limit: 120,
         shouldRenderForm: true
     };
-
 
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({town: event.currentTarget.value})
@@ -45,8 +45,9 @@ export default class SearchDestinationForm extends Component {
                 type="submit"
                 style={{ marginLeft: "auto" }}
                 variant="contained"
-                size="medium"
+                size="large"
                 color="primary"
+                fullWidth={true}
             >
                 Buscar
             </Button>
@@ -56,7 +57,7 @@ export default class SearchDestinationForm extends Component {
     _renderBackButton() {
         return (
             <Button
-                style={{ marginLeft: "auto" }}
+                style={{ marginLeft: "auto", flexGrow: 1 }}
                 variant="contained"
                 size="medium"
                 color="secondary"
@@ -70,14 +71,22 @@ export default class SearchDestinationForm extends Component {
     render() {
         if (this.state.shouldRenderForm) {
             return (
+                <>
+                <Typography component="h1" variant="h5">
+                Busca el mejor orden para tu próximo destino
+                </Typography>
                 <Box component="form" onSubmit={this.handleSubmit} noValidate sx={{ mt: 1 }}>
                             {this._renderTextInput()}
+                            <DestinationsNumberSlider texto='Número de destinos:' minValue={10} maxValue={500}/>
                             {this._renderSubmitButton()}
-                </Box>
+                </Box></>
             );
         } else {
             return (
                 <>
+                    <Typography component="h1" variant="h5">
+                        Estos son los mejores destinos si vives en {this.state.town}:
+                    </Typography>
                     <DestinationsDataGrid fromTown={this.state.town}/>
                     {this._renderBackButton()}
                 </>
