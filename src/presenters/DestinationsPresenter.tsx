@@ -35,6 +35,6 @@ export default class DestinationsPresenter extends DestinationsPresenterInterfac
 
     _calculateKmWithTwoDecimals = (distance: number) => {
         const km = distance / 1000;
-        return km.toFixed(2).toString() + ' km';
+        return km.toFixed(1).toString() + ' km';
     }
 }
