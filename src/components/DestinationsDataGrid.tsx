@@ -1,7 +1,6 @@
 import DestinationsPresenter from "../presenters/DestinationsPresenter";
 import React from "react";
 import {DataGrid, esES} from "@mui/x-data-grid";
-import {Grid, Paper} from "@mui/material";
 import GetDestinationsAPIConnector from "../connectors/GetDestinationsAPIConnector";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -21,24 +20,34 @@ export default class DestinationsDataGrid extends React.Component <any, any> {
             theme: createTheme(),
             rows: [{id: 0, from: '', to: '', distance: '', time: ''}],
             columns: [
-                {field: 'id', headerName: '#', flex: 0.15,},
+                {field: 'id', headerName: '#', flex: 0.15, maxWidth: 50},
                 {
                     field: 'to',
                     headerName: 'Destino',
                     editable: false,
+                    minWidth: 150,
                     flex: 1,
+                },
+                {
+                    field: 'state',
+                    headerName: 'Provincia',
+                    editable: false,
+                    minWidth: 100,
+                    flex: 0.85,
                 },
                 {
                     field: 'time',
                     headerName: 'Tiempo',
                     editable: false,
+                    minWidth: 75,
                     flex: 0.65,
                 },
                 {
                     field: 'distance',
                     headerName: 'Distancia',
                     editable: false,
-                    flex: 0.65,
+                    minWidth: 75,
+                    flex: 0.65
                 },
             ]
         };
@@ -62,7 +71,7 @@ export default class DestinationsDataGrid extends React.Component <any, any> {
 
   render() {
       return (
-          <Grid container style={{height: 500, width: '100%'}}>
+          <Box style={{height: 500, width: '100%'}}>
               <DataGrid
                   rows={this.state.rows}
                   columns={this.state.columns}
@@ -71,7 +80,7 @@ export default class DestinationsDataGrid extends React.Component <any, any> {
                   localeText={esES.components.MuiDataGrid.defaultProps.localeText}
                   getRowHeight={() => 'auto'}
               />
-          </Grid>
+          </Box>
       )
   }
 }

@@ -23,7 +23,8 @@ export default class GetDestinationsAPIConnector extends GetDestinationsConnecto
                 const data = responseData.data[0];
 
                 for (let i = 0; i < data.length; i += 1) {
-                    destination = new DestinationEntity(data[i].from, data[i].to, data[i].time, data[i].distance);
+                    destination = new DestinationEntity(data[i].from, data[i].to, data[i].state,
+                        data[i].time, data[i].distance);
                     destinations.push(destination);
                 }
                 return destinations;
