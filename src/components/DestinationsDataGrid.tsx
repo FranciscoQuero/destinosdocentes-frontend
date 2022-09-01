@@ -18,7 +18,7 @@ export default class DestinationsDataGrid extends React.Component <any, any> {
             fromTown: this.props.fromTown,
             limit: this.props.limit,
             theme: createTheme(),
-            rows: [{id: 0, from: '', to: '', distance: '', time: ''}],
+            rows: [{id: 0, from: 'Cargando...', to: '', state: '', distance: '', time: ''}],
             columns: [
                 {field: 'id', headerName: '#', flex: 0.15, maxWidth: 50},
                 {

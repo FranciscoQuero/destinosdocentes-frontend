@@ -13,8 +13,8 @@ export default class DestinationsPresenter extends DestinationsPresenterInterfac
             currentTime = this._calculateTimeInHoursAndMinutes(destinations[i].time);
             currentDistance = this._calculateKmWithTwoDecimals(destinations[i].distance);
             currentData = {
-                'id': i + 1, 'from': destinations[i].from, 'to': destinations[i].to, 'time': currentTime,
-                'distance': currentDistance
+                'id': i + 1, 'from': destinations[i].from, 'to': destinations[i].to, 'state': destinations[i].state,
+                'time': currentTime, 'distance': currentDistance
             };
 
             rows.push(currentData);
