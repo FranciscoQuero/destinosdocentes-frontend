@@ -7,7 +7,8 @@ import {createTheme, ThemeProvider} from "@mui/material/styles";
 import Box from "@mui/material/Box";
 
 interface DestinationsProps {
-    fromTown: string
+    fromTown: string,
+    limit?: number
 }
 
 export default class DestinationsDataGrid extends React.Component <any, any> {
@@ -16,6 +17,7 @@ export default class DestinationsDataGrid extends React.Component <any, any> {
         super(props);
         this.state = {
             fromTown: this.props.fromTown,
+            limit: this.props.limit,
             theme: createTheme(),
             rows: [{id: 0, from: '', to: '', distance: '', time: ''}],
             columns: [
@@ -51,7 +53,7 @@ export default class DestinationsDataGrid extends React.Component <any, any> {
     const connector = new GetDestinationsAPIConnector();
     const presenter = new DestinationsPresenter();
 
-    connector.getDestinations(this.props.fromTown, 120)
+    connector.getDestinations(this.state.fromTown, this.state.limit)
         .then((response) => {
             const rows = presenter.getDestinationsData(response);
             this.setState({rows: rows});

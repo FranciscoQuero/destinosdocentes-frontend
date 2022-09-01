@@ -11,8 +11,12 @@ export default class SearchDestinationForm extends Component {
         shouldRenderForm: true
     };
 
-    handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    handleTownChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({town: event.currentTarget.value})
+    };
+
+    handleSliderChange = (value: number) => {
+        this.setState({limit: value})
     };
 
     handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -33,7 +37,7 @@ export default class SearchDestinationForm extends Component {
                        autoFocus
                        label="Introduce tu localidad"
                        size='small'
-                       onChange={this.handleChange}
+                       onChange={this.handleTownChange}
                        name='town'
             />
         )
@@ -77,7 +81,7 @@ export default class SearchDestinationForm extends Component {
                 </Typography>
                 <Box component="form" onSubmit={this.handleSubmit} noValidate sx={{ mt: 1 }}>
                             {this._renderTextInput()}
-                            <DestinationsNumberSlider texto='Número de destinos:' minValue={10} maxValue={500}/>
+                            <DestinationsNumberSlider texto='Número de destinos:' minValue={10} maxValue={500} onChange={this.handleSliderChange}/>
                             {this._renderSubmitButton()}
                 </Box></>
             );
@@ -87,7 +91,7 @@ export default class SearchDestinationForm extends Component {
                     <Typography component="h1" variant="h5">
                         Estos son los mejores destinos si vives en {this.state.town}:
                     </Typography>
-                    <DestinationsDataGrid fromTown={this.state.town}/>
+                    <DestinationsDataGrid fromTown={this.state.town} limit={this.state.limit}/>
                     {this._renderBackButton()}
                 </>
             );

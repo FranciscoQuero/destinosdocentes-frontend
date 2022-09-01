@@ -13,7 +13,8 @@ const Input = styled(MuiInput)`
 interface inputProps {
     texto: string,
     minValue: number,
-    maxValue: number
+    maxValue: number,
+    onChange: () => {}
 }
 
 export default class DestinationsNumberSlider extends React.Component <any, any> {
@@ -24,16 +25,20 @@ export default class DestinationsNumberSlider extends React.Component <any, any>
             texto: props.texto,
             minValue: props.minValue,
             maxValue: props.maxValue,
-            currentValue: 120
+            currentValue: 120,
+            onChange: props.onChange
         };
     }
 
     _handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({currentValue: (event.target.value === '' ? '' : Number(event.target.value))});
+        const value = (event.target.value === '' ? '' : Number(event.target.value));
+        this.setState({currentValue: value});
+        this.state.onChange(value);
   };
 
     _handleSliderChange = (event: Event, newValue: number | number[]) => {
         this.setState({currentValue: newValue});
+        this.state.onChange(newValue);
     };
 
     _handleBlur = (event: Event, value: number | number[]) => {
