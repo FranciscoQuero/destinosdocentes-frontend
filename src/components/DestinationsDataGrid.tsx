@@ -2,7 +2,7 @@ import DestinationsPresenter from "../presenters/DestinationsPresenter";
 import React from "react";
 import {DataGrid, esES} from "@mui/x-data-grid";
 import GetDestinationsAPIConnector from "../connectors/GetDestinationsAPIConnector";
-import {createTheme, ThemeProvider} from "@mui/material/styles";
+import {createTheme} from "@mui/material/styles";
 import Box from "@mui/material/Box";
 
 interface DestinationsProps {
@@ -18,7 +18,7 @@ export default class DestinationsDataGrid extends React.Component <any, any> {
             fromTown: this.props.fromTown,
             limit: this.props.limit,
             theme: createTheme(),
-            rows: [{id: 0, from: 'Cargando...', to: '', state: '', distance: '', time: ''}],
+            rows: [{id: 0, from: '', to: 'Cargando...', state: '', distance: '', time: ''}],
             columns: [
                 {field: 'id', headerName: '#', flex: 0.15, maxWidth: 50},
                 {
