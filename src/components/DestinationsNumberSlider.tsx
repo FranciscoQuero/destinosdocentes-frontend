@@ -25,7 +25,7 @@ export default class DestinationsNumberSlider extends React.Component <any, any>
             texto: props.texto,
             minValue: props.minValue,
             maxValue: props.maxValue,
-            currentValue: 120,
+            currentValue: 300,
             onChange: props.onChange
         };
     }
@@ -51,7 +51,7 @@ export default class DestinationsNumberSlider extends React.Component <any, any>
 
     render() {
         return (
-            <Box sx={{width: 250}}>
+            <Box>
                 <Typography id="input-slider" gutterBottom>
                     {this.state.texto}
                 </Typography>
@@ -71,7 +71,6 @@ export default class DestinationsNumberSlider extends React.Component <any, any>
                     <Grid item>
                         <Input
                             value={this.state.currentValue}
-                            size="medium"
                             onChange={this._handleInputChange}
                             //onBlur={this._handleBlur}
                             inputProps={{
