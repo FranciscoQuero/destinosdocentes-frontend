@@ -1,9 +1,9 @@
 import React from "react";
-import SearchDestinationForm from "./components/SearchDestinationForm";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {Box, Container, Typography} from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import InstagramIcon from '@mui/icons-material/Instagram';
+import TabsComponent from "./components/TabsComponent";
 
 export default class App extends React.Component {
   theme = createTheme();
@@ -15,19 +15,20 @@ export default class App extends React.Component {
                 <CssBaseline/>
                 <Box
                     sx={{
-                        marginTop: 4,
+                        marginTop: 2,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                     }}
                 >
-                    <SearchDestinationForm/>
+                    <Typography variant="body1" gutterBottom align='center'>¿Te han convocado en Sipri y quieres ordenar tus destinos? <strong>Prueba el Modo Sipri</strong></Typography>
+                    <TabsComponent/>
                 </Box>
             </Container>
             <Container component='footer' maxWidth='xs'>
                 <Box
                     sx={{
-                        marginTop: 8,
+                        marginTop: 2,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'justify-center',

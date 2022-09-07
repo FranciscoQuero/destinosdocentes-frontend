@@ -1,14 +1,13 @@
 import React, {Component, SyntheticEvent} from "react";
 import {Autocomplete, Button, Box, TextField, Snackbar, IconButton} from '@mui/material';
 import DestinationsDataGrid from "./DestinationsDataGrid";
-import DestinationsNumberSlider from "./DestinationsNumberSlider";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 
-export default class SearchDestinationForm extends Component {
+export default class SipriForm extends Component {
     state = {
         town: '',
-        limit: 300,
+        sipriTowns: [],
         shouldRenderForm: true,
         shouldOpenSnackbar: false,
     };
@@ -99,7 +98,7 @@ export default class SearchDestinationForm extends Component {
         return (
             <Button
                 type="submit"
-                style={{ marginLeft: "auto" }}
+                style={{marginLeft: "auto"}}
                 variant="contained"
                 size="large"
                 color="primary"
@@ -142,7 +141,7 @@ export default class SearchDestinationForm extends Component {
     _renderBackButton() {
         return (
             <Button
-                style={{ marginLeft: "auto", flexGrow: 1 }}
+                style={{marginLeft: "auto", flexGrow: 1}}
                 variant="contained"
                 size="medium"
                 color="secondary"
@@ -161,8 +160,8 @@ export default class SearchDestinationForm extends Component {
                     Busca el mejor orden para tu próximo destino
                 </Typography>
                 <Box component="form" onSubmit={this.handleSubmit} noValidate sx={{ mt: 1 }}>
+                    {this._renderMultipleTextInput()}
                     {this._renderTextInput()}
-                    <DestinationsNumberSlider texto='Número de destinos:' minValue={10} maxValue={500} onChange={this.handleSliderChange}/>
                     {this._renderSubmitButton()}
                     {this._renderSnackbar()}
                 </Box>
@@ -174,7 +173,7 @@ export default class SearchDestinationForm extends Component {
                     <Typography component="h1" variant="h5">
                         Estos son los mejores destinos si vives en {this.state.town}:
                     </Typography>
-                    <DestinationsDataGrid fromTown={this.state.town} limit={this.state.limit}/>
+                    <DestinationsDataGrid fromTown={this.state.town} townsArray={this.state.sipriTowns}/>
                     {this._renderBackButton()}
                 </>
             );
