@@ -20,9 +20,10 @@ export default class GetDestinationsAPIConnector extends GetDestinationsConnecto
     }
 
     getSipriDestinations(fromTown: string, townsArray: string[]) {
-        const resourceUrl = '';
-        let url = new URL(this.baseUrl + resourceUrl + fromTown);
-        const params = {'destinations': townsArray.toString()}
+        const resourceUrl = 'travel-destination/';
+        let url = new URL(this.baseUrl + resourceUrl + fromTown + '/sipri');
+        const allTowns = townsArray.join(',');
+        const params = {'sipri_towns': allTowns}
         url.search = new URLSearchParams(params).toString()
 
         return this._doRequest(url);

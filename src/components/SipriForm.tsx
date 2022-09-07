@@ -1,8 +1,8 @@
 import React, {Component, SyntheticEvent} from "react";
 import {Autocomplete, Button, Box, TextField, Snackbar, IconButton} from '@mui/material';
-import DestinationsDataGrid from "./DestinationsDataGrid";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
+import SipriDataGrid from "./SipriDataGrid";
 
 export default class SipriForm extends Component {
     state = {
@@ -169,7 +169,7 @@ export default class SipriForm extends Component {
                     <Typography component="h1" variant="h5">
                         Estos son los mejores destinos si vives en {this.state.town}:
                     </Typography>
-                    <DestinationsDataGrid fromTown={this.state.town} townsArray={this.state.sipriTowns}/>
+                    <SipriDataGrid fromTown={this.state.town} townsArray={this.state.sipriTowns}/>
                     {this._renderBackButton()}
                 </>
             );
