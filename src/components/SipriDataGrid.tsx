@@ -5,18 +5,18 @@ import GetDestinationsAPIConnector from "../connectors/GetDestinationsAPIConnect
 import {createTheme} from "@mui/material/styles";
 import Box from "@mui/material/Box";
 
-interface DestinationsProps {
+interface SipriDataGridProps {
     fromTown: string,
-    limit?: number,
+    townsArray: string[],
 }
 
-export default class DestinationsDataGrid extends React.Component <any, any> {
+export default class SipriDataGrid extends React.Component <any, any> {
 
-    constructor(props: DestinationsProps) {
+    constructor(props: SipriDataGridProps) {
         super(props);
         this.state = {
             fromTown: this.props.fromTown,
-            limit: this.props.limit,
+            townsArray: this.props.townsArray,
             theme: createTheme(),
             rows: [{id: 0, from: '', to: 'Cargando...', state: '', distance: '', time: ''}],
             columns: [
@@ -62,7 +62,7 @@ export default class DestinationsDataGrid extends React.Component <any, any> {
     const connector = new GetDestinationsAPIConnector();
     const presenter = new DestinationsPresenter();
 
-    connector.getDestinations(this.state.fromTown, this.state.limit)
+    connector.getSipriDestinations(this.state.fromTown, this.state.townsArray)
         .then((response) => {
             const rows = presenter.getDestinationsData(response);
             this.setState({rows: rows});

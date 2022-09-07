@@ -80,7 +80,6 @@ export default class SearchDestinationForm extends Component {
                         required
                         fullWidth
                         id="town"
-                        autoFocus
                         label="Introduce tu localidad"
                         size='small'
                         name='town'

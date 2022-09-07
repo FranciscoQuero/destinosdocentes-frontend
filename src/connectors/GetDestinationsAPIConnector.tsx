@@ -7,14 +7,28 @@ export default class GetDestinationsAPIConnector extends GetDestinationsConnecto
     constructor() {
         super();
 
-        this.baseUrl = 'http://destinosdocentes.ddns.net:8000/travel-destination/';
+        this.baseUrl = 'http://destinosdocentes.ddns.net:8000/';
     }
 
     getDestinations(fromTown: string, limit: number) {
-        let url = new URL(this.baseUrl + fromTown);
+        const resourceUrl = 'travel-destination/';
+        let url = new URL(this.baseUrl + resourceUrl + fromTown);
         const params = {'limit': limit.toString()}
         url.search = new URLSearchParams(params).toString()
 
+        return this._doRequest(url);
+    }
+
+    getSipriDestinations(fromTown: string, townsArray: string[]) {
+        const resourceUrl = '';
+        let url = new URL(this.baseUrl + resourceUrl + fromTown);
+        const params = {'destinations': townsArray.toString()}
+        url.search = new URLSearchParams(params).toString()
+
+        return this._doRequest(url);
+    }
+
+    _doRequest(url: URL) {
         return fetch(url)
             .then((response => response.json()))
             .then((responseData) => {

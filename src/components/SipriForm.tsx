@@ -43,17 +43,14 @@ export default class SipriForm extends Component {
                 filterSelectedOptions
                 onChange={(event: React.SyntheticEvent, newInputValues: string[]) => {
                     this.setState({sipriTowns: newInputValues});
-                    console.log(newInputValues);
                 }}
                 renderInput={(params) => (
                     <TextField
                         {...params}
-                        margin="normal"
                         required
                         fullWidth
                         id="town"
-                        autoFocus
-                        label="Introduce tu localidad"
+                        label="Introduce los destinos de Sipri"
                         size='small'
                         name='town'
                     />
@@ -79,7 +76,6 @@ export default class SipriForm extends Component {
                         required
                         fullWidth
                         id="town"
-                        autoFocus
                         label="Introduce tu localidad"
                         size='small'
                         name='town'
@@ -132,7 +128,7 @@ export default class SipriForm extends Component {
                 onClose={() => {
                     this.setState({shouldOpenSnackbar: false});
                 }}
-                message="Por favor, selecciona una localidad de origen."
+                message="Por favor, rellena todos los campos."
                 action={action}
             />
         );
@@ -156,8 +152,8 @@ export default class SipriForm extends Component {
         if (this.state.shouldRenderForm) {
             return (
                 <>
-                <Typography component="h1" variant="h5">
-                    Busca el mejor orden para tu próximo destino
+                <Typography component={'span'} variant="h5">
+                    Introduce los destinos de tu convocatoria Sipri y los ordenamos por ti
                 </Typography>
                 <Box component="form" onSubmit={this.handleSubmit} noValidate sx={{ mt: 1 }}>
                     {this._renderMultipleTextInput()}

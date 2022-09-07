@@ -1,5 +1,4 @@
 import * as React from 'react';
-import SwipeableViews from 'react-swipeable-views';
 import { useTheme } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
@@ -30,7 +29,7 @@ function TabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+            {children}
         </Box>
       )}
     </div>
@@ -52,13 +51,8 @@ export default function TabsComponent() {
     setValue(newValue);
   };
 
-  const handleChangeIndex = (index: number) => {
-    setValue(index);
-    console.log(index);
-  };
-
   return (
-    <Box sx={{ bgcolor: 'background.paper', display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 2,}}>
+    <Box sx={{ bgcolor: 'background.paper', display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 2, maxWidth: 600}}>
       <AppBar position="static">
         <Tabs
           value={value}
@@ -72,11 +66,6 @@ export default function TabsComponent() {
           <Tab label="Modo Sipri" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
-      <SwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={value}
-        onChangeIndex={handleChangeIndex}
-      >
         <TabPanel value={value} index={0} dir={theme.direction}>
           <CssBaseline/>
                 <Box
@@ -102,7 +91,6 @@ export default function TabsComponent() {
           <SipriForm/>
             </Box>
         </TabPanel>
-      </SwipeableViews>
     </Box>
   );
 }

@@ -4,6 +4,7 @@ import {Box, Container, Typography} from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TabsComponent from "./components/TabsComponent";
+import SearchDestinationForm from "./components/SearchDestinationForm";
 
 export default class App extends React.Component {
   theme = createTheme();
